@@ -7,8 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    post = Post.friendly.find(params[:slug])
-    @post = PostPresenter.new(post)
+    @post = Post.friendly.find(params[:slug])
     respond_with(@post)
   end
 end
