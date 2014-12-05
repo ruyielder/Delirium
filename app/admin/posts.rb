@@ -1,4 +1,14 @@
 ActiveAdmin.register Post do
+  form do |f|
+    f.inputs 'Details' do
+      f.input :title, label: 'Tytuł'
+      f.input :content, label: 'Treść'
+    end
+
+    f.actions
+  end
+
+
   controller do
     defaults finder: :find_by_slug
 
