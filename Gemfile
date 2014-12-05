@@ -43,3 +43,5 @@ gem 'devise'
 gem 'jquery-ui-rails'
 
 gem 'activeadmin', github: 'RubySource/active_admin', branch: 'rails4'
+
+gem 'rspec-rails'
