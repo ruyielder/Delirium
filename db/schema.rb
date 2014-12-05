@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205123816) do
+ActiveRecord::Schema.define(version: 20141205131720) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -53,5 +53,7 @@ ActiveRecord::Schema.define(version: 20141205123816) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true
 
 end
