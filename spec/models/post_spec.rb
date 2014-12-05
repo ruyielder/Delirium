@@ -28,4 +28,17 @@ describe Post do
   it 'has a valid slug' do
     expect(create(:post, title: 'Żółć jest żółta').slug).to eq 'zolc-jest-zolta'
   end
+
+  it 'has a unique title' do
+    create(:post, title: 'Hej')
+    expect {create(:post, title: 'Hej')}.to raise_error(ActiveRecord::RecordInvalid)
+  end
+
+  it 'has moved errors from slug to title' do
+    create(:post, title: 'Hej')
+    post = build(:post, title: 'Hej')
+    post.save
+    expect(post.valid?).to be false
+    expect(post.errors.messages).to eq(title: ['has already been taken'])
+  end
 end
