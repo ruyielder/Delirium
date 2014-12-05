@@ -2,7 +2,6 @@ FactoryGirl.define do
   factory :post do
     title Faker::Name.title
     content Faker::Lorem.paragraph
-    slug Faker::Internet.slug
 
     factory :draft_post do
       draft true

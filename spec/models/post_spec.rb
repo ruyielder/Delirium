@@ -24,4 +24,8 @@ describe Post do
   it 'is invalid without slug' do
     expect {create(:post, slug: '')}.to raise_error(ActiveRecord::RecordInvalid)
   end
+
+  it 'has a valid slug' do
+    expect(create(:post, title: 'Żółć jest żółta').slug).to eq 'zolc-jest-zolta'
+  end
 end
