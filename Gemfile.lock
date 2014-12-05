@@ -139,6 +139,7 @@ GEM
       polyamorous (~> 1.1)
     rdoc (4.1.2)
       json (~> 1.4)
+    redcarpet (3.2.1)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     rspec-core (3.1.7)
@@ -204,6 +205,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   rails (= 4.1.7)
+  redcarpet
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
