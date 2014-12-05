@@ -1,10 +1,15 @@
-class PostsController < InheritedResources::Base
-  defaults finder: :find_by_slug
+class PostsController < ApplicationController
+  respond_to :html
 
-  private
+  def index
+    @posts = Post.all
+    respond_with(@posts)
+  end
 
-    def post_params
-      params.require(:post).permit(:title, :slug, :content, :draft, :published_at)
-    end
+  def show
+    post = Post.friendly.find(params[:slug])
+    @post = PostPresenter.new(post)
+    respond_with(@post)
+  end
 end
 

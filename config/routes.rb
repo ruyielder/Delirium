@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :posts
+  get 'posts' => 'posts#index', as: :posts
+  get 'posts/:slug' => 'posts#show', as: :post
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
