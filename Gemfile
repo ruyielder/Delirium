@@ -45,3 +45,5 @@ gem 'jquery-ui-rails'
 gem 'activeadmin', github: 'RubySource/active_admin', branch: 'rails4'
 
 gem 'rspec-rails'
+
+gem 'factory_girl_rails', group: :test
