@@ -49,3 +49,5 @@ gem 'rspec-rails'
 gem 'factory_girl_rails', group: :test
 
 gem 'faker', group: :test
+
+gem 'friendly_id', '~> 5.0.0'
