@@ -55,3 +55,5 @@ gem 'friendly_id', '~> 5.0.0'
 gem 'redcarpet'
 
 gem 'draper'
+
+gem 'capybara'
