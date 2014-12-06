@@ -41,4 +41,12 @@ describe Post do
     expect(post.valid?).to be false
     expect(post.errors.messages).to eq(title: ['has already been taken'])
   end
+
+  it 'has published scope' do
+    posts = [create(:published_post), create(:published_post), create(:draft_post)]
+    published_posts = Post.published
+    expect(published_posts.length).to eq(2)
+    expect(posts[0]).to eq(published_posts[0])
+    expect(posts[1]).to eq(published_posts[1])
+  end
 end

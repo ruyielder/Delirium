@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
 
   after_validation :move_slug_error_to_title
 
+  scope :published, -> {where(draft: false)}
+
   def move_slug_error_to_title
     errors.add :title, *errors.delete(:slug) if errors[:slug].present?
   end
