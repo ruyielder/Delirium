@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :post do
-    title Faker::Name.title
+    title { Faker::Name.title }
     content Faker::Lorem.paragraph
 
     factory :draft_post do
