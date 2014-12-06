@@ -3,6 +3,7 @@ ActiveAdmin.register Post do
     f.inputs 'Details' do
       f.input :title, label: 'Tytuł'
       f.input :content, label: 'Treść'
+      f.input :draft, label: 'Szkic?'
     end
 
     f.actions
