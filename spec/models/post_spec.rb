@@ -49,4 +49,12 @@ describe Post do
     expect(posts[0]).to eq(published_posts[0])
     expect(posts[1]).to eq(published_posts[1])
   end
+  
+  it 'is valid with tags' do
+    expect(build(:post, tag_line: 'python, ruby').valid?).to be true
+  end
+
+  it 'is invalid with duplicated tags in tag_line' do
+    expect {create(:post, tag_line: 'python, python')}.to raise_error(ActiveRecord::RecordInvalid)
+  end
 end

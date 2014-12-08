@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
 
   validates :title, :slug, :content, presence: true
   validates_uniqueness_of :slug
+  validates :tag_line, tag_line: true
 
   after_validation :move_slug_error_to_title
 
