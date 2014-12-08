@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205131720) do
+ActiveRecord::Schema.define(version: 20141208082406) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -55,5 +55,14 @@ ActiveRecord::Schema.define(version: 20141205131720) do
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["slug"], name: "index_tags_on_slug", unique: true
 
 end
