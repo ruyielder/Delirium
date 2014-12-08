@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208082406) do
+ActiveRecord::Schema.define(version: 20141208084132) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20141208082406) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "post_tags", force: true do |t|
+    t.integer  "post",       null: false
+    t.integer  "tag",        null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "post_tags", ["post", "tag"], name: "index_post_tags_on_post_and_tag", unique: true
+  add_index "post_tags", ["post"], name: "index_post_tags_on_post"
+  add_index "post_tags", ["tag"], name: "index_post_tags_on_tag"
 
   create_table "posts", force: true do |t|
     t.string   "title"
