@@ -57,3 +57,5 @@ gem 'redcarpet'
 gem 'draper'
 
 gem 'capybara'
+
+gem 'activerecord-import'
