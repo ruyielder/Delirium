@@ -59,3 +59,5 @@ gem 'draper'
 gem 'capybara'
 
 gem 'activerecord-import'
+
+gem 'kaminari'
