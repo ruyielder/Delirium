@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'posts' => 'posts#index', as: :posts
+  root 'posts#index', as: :posts
+  get ':slug' => 'posts#show', as: :post
   get 'tag/:tag' => 'posts#index_by_tag', as: :tagged_posts
-  get 'posts/:slug' => 'posts#show', as: :post
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # The priority is based upon order of creation: first created -> highest priority.
