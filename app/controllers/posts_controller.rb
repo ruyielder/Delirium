@@ -2,7 +2,10 @@ class PostsController < ApplicationController
   respond_to :html
 
   def index
-    @posts = Post.published.decorate
+    @posts = Post.published.
+        page(params[:page]).
+        per(Rails.configuration.posts_per_page).
+        decorate
     respond_with(@posts)
   end
 
