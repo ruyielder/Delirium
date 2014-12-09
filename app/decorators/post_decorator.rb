@@ -3,6 +3,10 @@ require 'redcarpet'
 class PostDecorator < Draper::Decorator
   delegate_all
 
+  def self.collection_decorator_class
+    PaginatingDecorator
+  end
+
   def link_to_post
     h.link_to title, h.post_path(slug)
   end
