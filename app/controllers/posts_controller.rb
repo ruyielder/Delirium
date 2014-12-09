@@ -3,14 +3,19 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.published.
-        page(params[:page]).
-        per(Rails.configuration.posts_per_page).
-        decorate
+      page(params[:page]).
+      per(Rails.configuration.posts_per_page).
+      decorate
     respond_with(@posts)
   end
 
   def index_by_tag
-    @posts = Post.published.tagged_with(params[:tag]).decorate
+    @posts = Post.published.
+      tagged_with(params[:tag]).
+      page(params[:page]).
+      per(Rails.configuration.posts_per_page).
+      decorate
+    @tag_slug = params[:tag]
     respond_with(@posts)
   end
 

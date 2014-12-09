@@ -1,0 +1,9 @@
+<!--:current_page, :total_pages, :limit_value-->
+
+<% unless posts.current_page == 1 %>
+  <%= link_to 'Poprzednia strona', tagged_posts_page_path(tag_slug, posts.current_page - 1) %>
+<%end %>
+
+<% unless posts.current_page == posts.total_pages %>
+  <%= link_to 'Następna strona', tagged_posts_page_path(tag_slug, posts.current_page + 1) %>
+<%end %>
