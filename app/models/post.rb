@@ -14,6 +14,11 @@ class Post < ActiveRecord::Base
 
   scope :published, -> {where(draft: false)}
 
+  scope :tagged_with, -> (tag_slug) do
+    tag = Tag.friendly.find(tag_slug)
+    joins(:post_tags).where('post_tags.tag_id = ?', tag.id)
+  end
+
   def rebuild_post_tags
     post_tags.all.destroy_all
     tag_names = TagsHelper::TagParser.new.parse(tag_line)

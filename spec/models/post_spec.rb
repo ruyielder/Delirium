@@ -70,4 +70,9 @@ describe Post do
     tag_names = Set.new post.tags.map &:name
     expect(tag_names).to eq(Set['python', 'javascript', 'ruby'])
   end
+
+  it 'has tagged_with scope' do
+    posts = [create(:post, tag_line: 'python'), create(:post, tag_line:'python, ror')]
+    expect(Post.tagged_with('ror').all).to eq([posts[1]])
+  end
 end
