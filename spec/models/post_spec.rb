@@ -49,12 +49,25 @@ describe Post do
     expect(posts[0]).to eq(published_posts[0])
     expect(posts[1]).to eq(published_posts[1])
   end
-  
+
   it 'is valid with tags' do
     expect(build(:post, tag_line: 'python, ruby').valid?).to be true
   end
 
   it 'is invalid with duplicated tags in tag_line' do
     expect {create(:post, tag_line: 'python, python')}.to raise_error(ActiveRecord::RecordInvalid)
+  end
+
+  it 'creates tags after save' do
+    post = create(:post, tag_line: 'python, ruby')
+    tag_names = post.tags.map &:name
+    expect(tag_names).to eq(%w[python ruby])
+  end
+
+  it 'can update tags' do
+    post = create(:post, tag_line: 'python, ruby')
+    post.update_attribute(:tag_line, 'python, javascript, ruby')
+    tag_names = Set.new post.tags.map &:name
+    expect(tag_names).to eq(Set['python', 'javascript', 'ruby'])
   end
 end
