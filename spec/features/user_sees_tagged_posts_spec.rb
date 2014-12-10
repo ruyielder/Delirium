@@ -25,4 +25,13 @@ feature 'User sees tagged posts' do
 
     expect(page.status_code).to eq(404)
   end
+
+  scenario 'he sees humanized comment count' do
+    post = create(:published_post, tag_line: 'ruby')
+    create(:comment_post, post: post)
+
+    visit tagged_posts_path('ruby')
+
+    expect(page).to have_text('1 komentarz')
+  end
 end
