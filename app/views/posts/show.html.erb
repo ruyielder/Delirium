@@ -1,1 +1,3 @@
 <%= render partial: 'post', locals: {post: @post} %>
+
+<p><%= @post.comment_posts.humanize_count %></p>
