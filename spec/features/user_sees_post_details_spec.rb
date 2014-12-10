@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 
-feature 'User sees posts' do
+feature 'User sees post details' do
   scenario 'he sees single post' do
     post = create(:published_post)
 
