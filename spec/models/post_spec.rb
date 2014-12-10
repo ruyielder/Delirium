@@ -75,4 +75,16 @@ describe Post do
     posts = [create(:post, tag_line: 'python'), create(:post, tag_line:'python, ror')]
     expect(Post.tagged_with('ror').all).to eq([posts[1]])
   end
+
+  it 'update publish datetime if post is not a draft' do
+    post = create(:post, draft: false)
+    expect(post.published_at).not_to be_nil
+  end
+
+  it 'has got only one publish datetime' do
+    post = create(:post, draft: false)
+    published_at = post.published_at
+    post.save
+    expect(post.published_at).to eq published_at
+  end
 end

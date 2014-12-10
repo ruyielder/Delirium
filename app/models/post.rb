@@ -10,6 +10,7 @@ class Post < ActiveRecord::Base
   validates :tag_line, tag_line: true
 
   after_validation :move_slug_error_to_title
+  before_save :update_published_at
   after_save :rebuild_post_tags
 
   scope :published, -> {where(draft: false)}
@@ -60,5 +61,11 @@ class Post < ActiveRecord::Base
       posts_tags << PostTag.new(post_id: id, tag_id: tag.id)
     end
     posts_tags
+  end
+
+  def update_published_at
+    if published_at.nil? and not draft?
+      self.published_at = DateTime.now
+    end
   end
 end
