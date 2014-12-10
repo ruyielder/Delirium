@@ -22,6 +22,20 @@ describe PostsController do
     end
   end
 
+  describe 'GET #index_by_tag' do
+    it 'has ordered posts' do
+      posts = [
+          create(:published_post, tag_line: 'ruby', published_at: Date.new(2013, 12, 5)),
+          create(:published_post, tag_line: 'ruby', published_at: Date.new(2014, 12, 5))
+      ]
+
+      get :index_by_tag, tag: 'ruby'
+
+      expect(assigns(:posts)).to eq([posts[1], posts[0]])
+    end
+  end
+
+
   describe 'GET #archives' do
     it 'has ordered posts' do
       posts = [
