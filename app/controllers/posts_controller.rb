@@ -23,5 +23,10 @@ class PostsController < ApplicationController
     @post = Post.published.friendly.find(params[:slug]).decorate
     respond_with(@post)
   end
+
+  def archives
+    @posts = Post.published.ordered.decorate
+    respond_with(@posts)
+  end
 end
 
