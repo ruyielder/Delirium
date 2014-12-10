@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CommentPost, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'has a valid base factory' do
+    post = create(:published_post)
+    expect(build(:comment_post, post: post).valid?).to be true
+  end
 end
