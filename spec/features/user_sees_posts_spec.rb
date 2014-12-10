@@ -18,4 +18,13 @@ feature 'User sees posts' do
 
     expect(page).not_to have_text(post.title)
   end
+
+  scenario 'he sees humanized comment count' do
+    post = create(:published_post)
+    create(:comment_post, post: post)
+
+    visit posts_path
+
+    expect(page).to have_text('1 komentarz')
+  end
 end

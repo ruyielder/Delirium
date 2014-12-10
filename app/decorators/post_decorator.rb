@@ -2,6 +2,7 @@ require 'redcarpet'
 
 class PostDecorator < Draper::Decorator
   delegate_all
+  decorates_association :comment_posts
 
   def self.collection_decorator_class
     PaginatingDecorator
@@ -16,5 +17,4 @@ class PostDecorator < Draper::Decorator
     markdown = Redcarpet::Markdown.new(renderer)
     markdown.render(object.content).html_safe
   end
-
 end
