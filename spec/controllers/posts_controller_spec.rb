@@ -50,4 +50,12 @@ describe PostsController do
       expect(assigns(:posts)).to eq([posts[3], posts[2], posts[0], posts[1]])
     end
   end
+
+  describe 'POST #create_comment_post' do
+    it 'can create a comment post' do
+      published_post = create(:published_post)
+      post :create_comment_post, slug: published_post.slug, comment_post: {name: 'Jan', content: 'Hej'}
+      expect(CommentPost.count).to eq(1)
+    end
+  end
 end

@@ -1,3 +1,30 @@
 <%= render partial: 'post', locals: {post: @post} %>
 
 <p><%= @post.comment_posts.humanize_count %></p>
+
+<%= form_for(@comment_post, url: comment_post_path(@post)) do |f| %>
+  <% if @comment_post.errors.any? %>
+    <p>Error: <%= @comment_post.errors.first[0] %> <%= @comment_post.errors.first[1] %></p>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name, 'Nazwa' %>
+    <%= f.text_field :name%>
+  </div>
+  <div class="field">
+    <%= f.label :url, 'Strona o Tobie' %>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :email, 'E-mail' %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :content, 'Wiadomość' %>
+    <%= f.text_area :content %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

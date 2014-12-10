@@ -23,12 +23,24 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.published.friendly.find(params[:slug]).decorate
-    respond_with(@post)
+    @comment_post = CommentPost.new
+    respond_with(@post, @comment_post)
   end
 
   def archives
     @posts = Post.published.ordered.decorate
     respond_with(@posts)
+  end
+
+  def create_comment_post
+    @post = Post.published.friendly.find(params[:slug]).decorate
+    comment_post_params = params.require(:comment_post).permit(:name, :url, :email, :content).merge(post: @post)
+    @comment_post = CommentPost.create(comment_post_params)
+    if @comment_post.valid?
+      redirect_to post_path(@post.slug)
+    else
+      render :show
+    end
   end
 end
 
