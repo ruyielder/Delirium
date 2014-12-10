@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe PostsController do
-  describe 'GET #index' do
+  describe 'GET #show' do
     it 'has 200 status code' do
       post = create(:published_post)
       get :show, slug: post.slug
@@ -9,13 +9,26 @@ describe PostsController do
     end
   end
 
+  describe 'GET #index' do
+    it 'has ordered posts' do
+      posts = [
+        create(:published_post, published_at: Date.new(2013, 12, 5)),
+        create(:published_post, published_at: Date.new(2014, 12, 5))
+      ]
+
+      get :index
+
+      expect(assigns(:posts)).to eq([posts[1], posts[0]])
+    end
+  end
+
   describe 'GET #archives' do
     it 'has ordered posts' do
       posts = [
-          create(:published_post, published_at: Date.new(2014, 12, 5)),
-          create(:published_post, published_at: Date.new(2013, 12, 5)),
-          create(:published_post, published_at: Date.new(2014, 12, 9)),
-          create(:published_post, published_at: Date.new(2014, 12, 17))
+        create(:published_post, published_at: Date.new(2014, 12, 5)),
+        create(:published_post, published_at: Date.new(2013, 12, 5)),
+        create(:published_post, published_at: Date.new(2014, 12, 9)),
+        create(:published_post, published_at: Date.new(2014, 12, 17))
       ]
 
       get :archives

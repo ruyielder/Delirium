@@ -3,6 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.published.
+      ordered.
       page(params[:page]).
       per(Rails.configuration.posts_per_page).
       decorate
