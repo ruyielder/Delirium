@@ -2,6 +2,8 @@
 
 <p><%= @post.comment_posts.humanize_count %></p>
 
+<%= render partial: 'comment_posts', locals: {comment_posts: @post.comment_posts} %>
+
 <%= form_for(@comment_post, url: comment_post_path(@post)) do |f| %>
   <% if @comment_post.errors.any? %>
     <p>Error: <%= @comment_post.errors.first[0] %> <%= @comment_post.errors.first[1] %></p>

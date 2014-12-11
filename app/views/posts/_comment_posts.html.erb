@@ -1,0 +1,14 @@
+<% comment_posts.each do |comment| %>
+  <div>
+    <% if comment.url.blank? %>
+      <p><strong>Autor:</strong> <%= comment.name %></p>
+    <% else %>
+      <p><strong>Autor:</strong> <%= link_to comment.name, comment.url %></p>
+    <% end %>
+
+    <p><strong>Data:</strong> <%= comment.created_at %></p>
+
+    <p><%= comment.content %></p>
+    <br />
+  </div>
+<% end %>
