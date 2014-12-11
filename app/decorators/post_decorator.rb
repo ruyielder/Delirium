@@ -20,4 +20,8 @@ class PostDecorator < Draper::Decorator
   def comment_posts
     object.comment_posts.published.decorate
   end
+
+  def published_at
+    localize object.published_at
+  end
 end
