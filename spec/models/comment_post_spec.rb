@@ -35,4 +35,11 @@ RSpec.describe CommentPost, :type => :model do
     post = create(:published_post)
     expect(build(:comment_post_with_url, post: post).valid?).to be true
   end
+
+  it 'has a published scope' do
+    post = create(:published_post)
+    published_comment_post = create(:comment_post, post: post)
+    blocked_comment_post = create(:comment_post, post: post, blocked: true)
+    expect(CommentPost.published).to eq([published_comment_post])
+  end
 end
