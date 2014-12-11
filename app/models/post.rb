@@ -3,6 +3,9 @@ class Post < ActiveRecord::Base
   has_many :tags, through: :post_tags
   has_many :comment_posts
 
+  # added for admin/posts
+  accepts_nested_attributes_for :comment_posts
+
   extend FriendlyId
   friendly_id :title, use: :slugged
 

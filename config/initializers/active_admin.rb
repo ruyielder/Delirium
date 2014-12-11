@@ -1,3 +1,12 @@
+class ActiveModel::Name
+
+  # This method is required by activeadmin. Without it, the following error occurs while using with nested resources.
+  # "undefined method `upcase' for #<ActiveModel::Name...>"
+  def upcase
+    to_s.upcase
+  end
+end
+
 ActiveAdmin.setup do |config|
 
   # == Site Title
