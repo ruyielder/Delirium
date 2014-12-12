@@ -61,3 +61,5 @@ gem 'capybara'
 gem 'activerecord-import'
 
 gem 'kaminari'
+
+gem 'http'
