@@ -63,3 +63,5 @@ gem 'activerecord-import'
 gem 'kaminari'
 
 gem 'http'
+
+gem 'webmock', group: :test
