@@ -10,6 +10,8 @@ describe PostsController do
   end
 
   describe 'GET #index' do
+    as_guest
+
     it 'has ordered posts' do
       posts = [
         create(:published_post, published_at: Date.new(2013, 12, 5)),
@@ -52,10 +54,24 @@ describe PostsController do
   end
 
   describe 'POST #create_comment_post' do
-    it 'can create a comment post' do
-      published_post = create(:published_post)
-      post :create_comment_post, slug: published_post.slug, comment_post: {name: 'Jan', content: 'Hej'}
-      expect(CommentPost.count).to eq(1)
+    context 'when not logged in' do
+      as_guest
+
+      it 'can create a anonymous comment post' do
+        published_post = create(:published_post)
+        post :create_comment_post, slug: published_post.slug, comment_post: {name: 'Jan', content: 'Hej'}
+        expect(CommentPost.first.admin_user).to be_nil
+      end
+    end
+
+    context 'when logged in' do
+      login_admin
+
+      it 'can create a comment post' do
+        published_post = create(:published_post)
+        post :create_comment_post, slug: published_post.slug, comment_post: {name: 'Jan', content: 'Hej'}
+        expect(CommentPost.first.admin_user).to eq(AdminUser.first)
+      end
     end
   end
 end

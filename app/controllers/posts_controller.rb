@@ -2,6 +2,10 @@ class PostsController < ApplicationController
   respond_to :html
 
   def index
+    if admin_user_signed_in?
+      @value = 42
+      @user = current_admin_user
+    end
     @posts = Post.published.
       ordered.
       page(params[:page]).
@@ -34,7 +38,11 @@ class PostsController < ApplicationController
 
   def create_comment_post
     @post = find_post_by_slug(params[:slug])
-    @comment_post = create_comment_post_with_post(@post)
+    @comment_post = CommentPost.create(
+      params.require(:comment_post).
+        permit(:name, :url, :email, :content).
+        merge(post: @post, admin_user: current_admin_user)
+    )
     if @comment_post.valid?
       redirect_to post_path(@post.slug)
     else
@@ -46,31 +54,6 @@ class PostsController < ApplicationController
 
   def find_post_by_slug(slug)
     Post.published.friendly.find(slug).decorate
-  end
-
-  def create_comment_post_with_post(post)
-    # if current_admin_user
-    #   create_comment_post_by_admin_user(post)
-    # else
-      create_comment_post_by_guest(post)
-    # end
-  end
-
-  def create_comment_post_by_admin_user(post)
-    CommentPost.create(
-      params.require(:comment_post).
-      permit(:name, :url, :email, :content).
-      merge(post: post)
-    )
-    # TODO: dodaj admin usera do comments
-  end
-
-  def create_comment_post_by_guest(post)
-    CommentPost.create(
-      params.require(:comment_post).
-      permit(:name, :url, :email, :content).
-      merge(post: post)
-    )
   end
 end
 
