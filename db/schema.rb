@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141212134953) do
+ActiveRecord::Schema.define(version: 20141212181819) do
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -82,6 +82,17 @@ ActiveRecord::Schema.define(version: 20141212134953) do
   end
 
   add_index "posts", ["slug"], name: "index_posts_on_slug", unique: true
+
+  create_table "snippets", force: true do |t|
+    t.string   "name"
+    t.integer  "post_id"
+    t.text     "source"
+    t.string   "gist_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "snippets", ["post_id"], name: "index_snippets_on_post_id"
 
   create_table "tags", force: true do |t|
     t.string   "name"
