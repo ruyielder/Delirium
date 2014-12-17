@@ -12,8 +12,11 @@ class PostDecorator < Draper::Decorator
   end
 
   def content
-    renderer = Redcarpet::Render::HTML.new
-    markdown = Redcarpet::Markdown.new(renderer)
+    renderer = PostsHelper::HTMLwithGists.new(
+      hard_wrap: true, filter_html: true, autolink: true,
+      no_intraemphasis: true, fenced_code: true, gh_blockcode: true)
+    markdown = Redcarpet::Markdown.new(renderer,
+      :space_after_headers => true, :fenced_code_blocks => true)
     markdown.render(object.content).html_safe
   end
 
