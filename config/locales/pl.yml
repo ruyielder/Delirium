@@ -6,3 +6,8 @@ pl:
     formats:
       default: "%d/%m/%Y %H:%M"
       long: "%d/%m/%Y %H:%M"
+
+  errors:
+    messages:
+      blank: "Proszę uzupelnij pole %{attribute} w modelu %{model}'"
+

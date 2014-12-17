@@ -1,7 +1,5 @@
 ActiveAdmin.register Post do
   form multipart: true do |f|
-    f.semantic_errors *f.object.errors.keys
-
     f.inputs 'Details' do
       f.input :title, label: 'Tytuł'
       f.input :content, label: 'Treść'
@@ -24,7 +22,6 @@ ActiveAdmin.register Post do
 
     f.actions
   end
-
 
   controller do
     defaults finder: :find_by_slug

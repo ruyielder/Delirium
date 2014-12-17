@@ -8,9 +8,9 @@ class Snippet < ActiveRecord::Base
 
   before_save :update_gist_url
 
-  def initialize(gist_client=nil, *args, **kwargs)
+  def initialize(*args, **kwargs)
     super(*args, **kwargs)
-    @gist_client = gist_client
+    @gist_client = nil
   end
 
   def update_gist_url
@@ -19,6 +19,10 @@ class Snippet < ActiveRecord::Base
   end
 
   def gist_client
-    @gist_client or SnippetsHelper::GistHttpClient.new
+    if @gist_client.nil?
+      @gist_client = SnippetsHelper::GistHttpClient.new
+    end
+
+    @gist_client
   end
 end
