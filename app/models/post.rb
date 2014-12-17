@@ -2,9 +2,11 @@ class Post < ActiveRecord::Base
   has_many :post_tags
   has_many :tags, through: :post_tags
   has_many :comment_posts
+  has_many :snippets
 
   # added for admin/posts
   accepts_nested_attributes_for :comment_posts
+  accepts_nested_attributes_for :snippets
 
   extend FriendlyId
   friendly_id :title, use: :slugged

@@ -9,6 +9,11 @@ ActiveAdmin.register Post do
       f.input :draft, label: 'Szkic?'
     end
 
+    f.has_many :snippets, :heading => 'Wstawki' do |app_f|
+      app_f.input :name, label: 'Nazwa pliku'
+      app_f.input :source, label: 'Kod źródłowy'
+    end
+
     f.has_many :comment_posts, :heading => 'Komentarze' do |app_f|
       app_f.input :name, label: 'Nazwa'
       app_f.input :url, label: 'URL'
