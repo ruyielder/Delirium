@@ -2,7 +2,15 @@ require 'http'
 
 module SnippetsHelper
 
-  class GistHttpClient
+  class GistClient
+
+    def post_file(filename, content)
+      raise NotImplementedError
+    end
+
+  end
+
+  class GistHttpClient < GistClient
 
     def initialize(api_url='https://api.github.com/gists', http_provider=HTTP)
       @api_url = api_url
@@ -23,6 +31,19 @@ module SnippetsHelper
           files: {filename => {content: content}}
       }
     end
+
+  end
+
+  class StubGistClient < GistClient
+
+    def initialize(response)
+      @response = response
+    end
+
+    def post_file(filename, content)
+      @response
+    end
+
   end
 
 end
