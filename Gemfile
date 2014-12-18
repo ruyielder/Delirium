@@ -65,3 +65,5 @@ gem 'kaminari'
 gem 'http'
 
 gem 'webmock', group: :test
+
+gem 'carrierwave'
