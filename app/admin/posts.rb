@@ -1,5 +1,5 @@
 ActiveAdmin.register Post do
-  form multipart: true do |f|
+  form :html => { multipart: true } do |f|
     f.inputs 'Details' do
       f.input :title, label: 'Tytuł'
       f.input :content, label: 'Treść'
@@ -10,6 +10,11 @@ ActiveAdmin.register Post do
     f.has_many :snippets, :heading => 'Wstawki' do |app_f|
       app_f.input :name, label: 'Nazwa pliku'
       app_f.input :source, label: 'Kod źródłowy'
+    end
+
+    f.has_many :image_posts, :heading => 'Obrazki' do |app_f|
+      app_f.input :image, as: :file, :hint => app_f.template.image_tag(app_f.object.image_url)
+      app_f.input :basename, label: 'Nazwa'
     end
 
     f.has_many :comment_posts, :heading => 'Komentarze' do |app_f|
