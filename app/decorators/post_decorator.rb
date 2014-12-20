@@ -17,7 +17,9 @@ class PostDecorator < Draper::Decorator
       no_intraemphasis: true, fenced_code: true, gh_blockcode: true)
     markdown = Redcarpet::Markdown.new(renderer,
       :space_after_headers => true, :fenced_code_blocks => true)
-    markdown.render(object.content).html_safe
+    html = markdown.render(object.content)
+    image_renderer = PostsHelper::ImagePostRenderer.new(object)
+    image_renderer.render(html).html_safe
   end
 
   def comment_posts
