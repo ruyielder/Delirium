@@ -1,0 +1,15 @@
+<% if subtitle.nil? %>
+  <%
+    meta title: 'Ruyielder Blog',
+         description: 'Blog o programowaniu w RoR i nie tylko.',
+         keywords: %w(ruyielder devlog blog programowanie kod Rails Ruby Python RoR)
+  %>
+<% else %>
+  <%
+    meta title: 'Ruyielder Blog << ' + subtitle,
+         description: 'Blog o programowaniu w RoR i nie tylko.',
+         keywords: %w(ruyielder devlog blog programowanie kod Rails Ruby Python RoR)
+  %>
+<% end %>
+
+
