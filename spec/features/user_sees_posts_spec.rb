@@ -46,4 +46,10 @@ feature 'User sees posts' do
     expect(page).not_to have_xpath("//img[@src=\"#{image_post.image_url}\"]")
   end
 
+  scenario 'he sees meta title' do
+    visit posts_path
+
+    expect(page).to have_title('Ruyielder Blog')
+  end
+
 end
