@@ -32,4 +32,11 @@ feature 'User sees archives' do
     expect(page).not_to have_text(posts[2].title)
     expect(page).to have_text(posts[3].title)
   end
+
+  scenario 'he sees meta title' do
+    visit archives_path
+
+    expect(page).to have_title('Ruyielder Blog << Archiwum')
+  end
+
 end
