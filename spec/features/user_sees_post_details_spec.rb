@@ -19,6 +19,15 @@ feature 'User sees post details' do
     expect(page).to have_text('1 komentarz')
   end
 
+
+  scenario 'he sees meta title' do
+    post = create(:published_post, title: 'Hello World')
+
+    visit post_path(slug: post.slug)
+
+    expect(page).to have_title('Ruyielder Blog << Hello World')
+  end
+
   # scenario 'he sees comments' do
   #   post = create(:published_post)
   #   comment = create(:comment_post, post: post)
