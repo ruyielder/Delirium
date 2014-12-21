@@ -28,23 +28,23 @@ feature 'User sees post details' do
     expect(page).to have_title('Ruyielder Blog << Hello World')
   end
 
-  # scenario 'he sees comments' do
-  #   post = create(:published_post)
-  #   comment = create(:comment_post, post: post)
-  #
-  #   visit post_path(post.slug)
-  #
-  #   expect(page).to have_text(comment.name)
-  # end
-  #
-  # scenario 'he sees published comments' do
-  #   post = create(:published_post)
-  #   published_comment = create(:comment_post, post: post)
-  #   blocked_comment = create(:comment_post, post: post, blocked: true)
-  #
-  #   visit post_path(post.slug)
-  #
-  #   expect(page).to have_text(published_comment.name)
-  #   expect(page).not_to have_text(blocked_comment.name)
-  # end
+  scenario 'he sees comments' do
+    post = create(:published_post)
+    comment = create(:comment_post, post: post)
+
+    visit post_path(post.slug)
+
+    expect(page).to have_text(comment.name)
+  end
+
+  scenario 'he sees published comments' do
+    post = create(:published_post)
+    published_comment = create(:comment_post, post: post)
+    blocked_comment = create(:comment_post, post: post, blocked: true)
+
+    visit post_path(post.slug)
+
+    expect(page).to have_text(published_comment.name)
+    expect(page).not_to have_text(blocked_comment.name)
+  end
 end
