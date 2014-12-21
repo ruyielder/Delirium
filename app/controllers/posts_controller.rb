@@ -21,7 +21,7 @@ class PostsController < ApplicationController
       page(params[:page]).
       per(Rails.configuration.posts_per_page).
       decorate
-    @tag_slug = params[:tag]
+    @tag = Tag.friendly.find(params[:tag])
     respond_with(@posts)
   end
 

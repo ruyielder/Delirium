@@ -34,4 +34,12 @@ feature 'User sees tagged posts' do
 
     expect(page).to have_text('1 komentarz')
   end
+
+  scenario 'he sees meta title' do
+    create(:published_post, tag_line: 'Python, ruby')
+
+    visit tagged_posts_path('python')
+
+    expect(page).to have_title('Ruyielder Blog << Python')
+  end
 end
