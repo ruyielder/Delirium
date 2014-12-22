@@ -1,0 +1,7 @@
+<% unless posts.current_page == 1 %>
+    <%= link_to 'Poprzednia strona', category_posts_page_path(category_slug, posts.current_page - 1) %>
+<%end %>
+
+<% unless posts.current_page == posts.total_pages %>
+    <%= link_to 'Następna strona', category_posts_page_path(category_slug, posts.current_page + 1) %>
+<%end %>

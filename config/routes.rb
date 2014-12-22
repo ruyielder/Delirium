@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'posts#index', as: :posts
   get 'posts/:slug' => 'posts#show', as: :post
   post 'posts/:slug' => 'posts#create_comment_post', as: :comment_post
+  get 'category/:category' => 'posts#index_by_category', as: :category_posts
   get 'tag/:tag' => 'posts#index_by_tag', as: :tagged_posts
   get 'page/:page' => 'posts#index', as: :posts_page
   get 'tag/:tag/page/:page' => 'posts#index_by_tag',  as: :tagged_posts_page

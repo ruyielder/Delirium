@@ -14,6 +14,17 @@ class PostsController < ApplicationController
     respond_with(@posts)
   end
 
+  def index_by_category
+    @posts = Post.published.
+      for_category_slug(params[:category]).
+      ordered.
+      page(params[:page]).
+      per(Rails.configuration.posts_per_page).
+        decorate
+    @category = Category.friendly.find(params[:category])
+    respond_with(@posts)
+  end
+
   def index_by_tag
     @posts = Post.published.
       tagged_with(params[:tag]).
