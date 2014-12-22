@@ -29,6 +29,11 @@ class Post < ActiveRecord::Base
     joins(:post_tags).where('post_tags.tag_id = ?', tag.id)
   end
 
+  scope :for_category_slug, -> (category_slug) do
+    category = Category.friendly.find(category_slug)
+    where(:category => category)
+  end
+
   scope :ordered, -> {order('published_at DESC')}
 
   def rebuild_post_tags

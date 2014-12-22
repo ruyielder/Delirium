@@ -75,6 +75,13 @@ describe Post do
     expect(Post.tagged_with('ror').all).to eq([posts[1]])
   end
 
+  it 'has for_category_slug scope' do
+    category = create(:category, name: 'db')
+    posts = [create(:post, category: category), create(:post)]
+    expect(Post.for_category_slug(category.slug).all).to eq([posts[0]])
+  end
+
+
   it 'update publish datetime if post is not a draft' do
     post = create(:post, draft: false)
     expect(post.published_at).not_to be_nil
