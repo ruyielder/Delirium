@@ -2,8 +2,10 @@ class Category < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
 
-  after_validation :move_slug_error_to_name
+  validates :name, :slug, presence: true
   validates_uniqueness_of :slug
+
+  after_validation :move_slug_error_to_name
 
   def move_slug_error_to_name
     errors.add :name, *errors.delete(:slug) if errors[:slug].present?
