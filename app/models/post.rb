@@ -1,10 +1,11 @@
 class Post < ActiveRecord::Base
+  belongs_to :category
+
   has_many :post_tags
   has_many :tags, through: :post_tags
   has_many :comment_posts
   has_many :snippets
   has_many :image_posts
-
   # added for admin/posts
   accepts_nested_attributes_for :snippets
   accepts_nested_attributes_for :image_posts
