@@ -2,6 +2,7 @@ ActiveAdmin.register Post do
   form :html => { multipart: true } do |f|
     f.inputs 'Details' do
       f.input :title, label: 'Tytuł'
+      f.input :category, label: 'Kategoria'
       f.input :content, label: 'Treść'
       f.input :tag_line, label: 'Tagi'
       f.input :draft, label: 'Szkic?'
