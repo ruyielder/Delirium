@@ -69,3 +69,5 @@ gem 'webmock', group: :test
 gem 'carrierwave'
 
 gem 'metamagic'
+
+gem 'bootstrap-sass'
