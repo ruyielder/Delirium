@@ -1,4 +1,5 @@
 <%= render partial: 'meta', locals: {subtitle: @post.title} %>
+<%= render partial: 'header' %>
 <%= render partial: 'posts/nav', locals: {actived_item: 'posts'} %>
 <%= render partial: 'post', locals: {post: @post} %>
 

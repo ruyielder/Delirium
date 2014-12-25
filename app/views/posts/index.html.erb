@@ -1,5 +1,6 @@
 <%= render partial: 'meta', locals: {subtitle: nil} %>
 <%= render partial: 'posts/nav', locals: {actived_item: 'posts'} %>
+<%= render partial: 'header' %>
 <%= render partial: 'posts', locals: {posts: @posts} %>
 <%= render partial: 'paginate_posts', locals: {posts: @posts} %>
 
