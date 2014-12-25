@@ -1,7 +1,11 @@
-<% unless posts.current_page == 1 %>
-  <%= link_to 'Poprzednia strona', posts_page_path(posts.current_page - 1) %>
-<%end %>
+<nav>
+  <ul class="pager">
+    <% unless posts.current_page == 1 %>
+      <li><%= link_to 'Poprzednia', posts_page_path(posts.current_page - 1) %></li>
+    <%end %>
 
-<% unless posts.current_page == posts.total_pages %>
-  <%= link_to 'Następna strona', posts_page_path(posts.current_page + 1) %>
-<%end %>
+    <% unless posts.current_page == posts.total_pages %>
+      <li><%= link_to 'Następna', posts_page_path(posts.current_page + 1) %></li>
+    <%end %>
+  </ul>
+</nav>
