@@ -2,7 +2,29 @@ require 'redcarpet'
 
 module PostsHelper
 
-  class HTMLwithGists < Redcarpet::Render::HTML
+  class BootstrapHTMLRenderer < Redcarpet::Render::HTML
+
+    def list(contents, list_type)
+      markup = list_type_to_s(list_type)
+      "<#{markup} class='.list-unstyled'>#{contents}</#{markup}>"
+    end
+
+    private
+
+    def list_type_to_s(list_type)
+      case list_type
+        when :ordered
+          'ol'
+        when :unordered
+          'ul'
+        else
+          'dl'
+      end
+    end
+
+  end
+
+  class HTMLwithGists < BootstrapHTMLRenderer
     def block_code(code, language)
       snippet = Snippet.where(name: code.strip).first
       create_script_markup(snippet.gist_url)
