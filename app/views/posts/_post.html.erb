@@ -1,5 +1,6 @@
-<section>
-  <h1><%= post.link_to_post %></h1>
-  <p><%= post.published_at %></p>
-  <div><%= post.content %></div>
-</section>
+<div class="blog-post">
+  <h2 class="blog-post-title"><%= post.link_to_post %></h2>
+  <p class="blog-post-meta"><%= post.published_at %></p>
+  <%= post.content %>
+  <p class="blog-post-meta text-right"><%= post.comment_posts.humanize_count %></p>
+</div>
