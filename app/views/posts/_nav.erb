@@ -1,24 +1,17 @@
-<nav class="navbar navbar-default navbar-static-top">
+<div class="blog-masthead">
   <div class="container">
-    <div class="navbar-header">
-      <%= link_to 'Ruyielder', posts_path, class: 'navbar-brand' %>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
+    <nav class="blog-nav">
+      <% if actived_item == 'posts' %>
+        <%= link_to 'Wpisy', posts_path, class: 'blog-nav-item active' %>
+      <% else %>
+        <%= link_to 'Wpisy', posts_path, class: 'blog-nav-item' %>
+      <% end %>
 
-        <% if actived_item == 'posts' %>
-          <li class="active"><%= link_to 'Wpisy', posts_path %></li>
-        <% else %>
-          <li><%= link_to 'Wpisy', posts_path %></li>
-        <% end %>
-
-        <% if actived_item == 'archives' %>
-            <li class="active"><%= link_to 'Archiwum', archives_path %></li>
-        <% else %>
-            <li><%= link_to 'Archiwum', archives_path %></li>
-        <% end %>
-
-      </ul>
-    </div>
+      <% if actived_item == 'archives' %>
+        <%= link_to 'Archiwum', archives_path, class: 'blog-nav-item active' %>
+      <% else %>
+        <%= link_to 'Archiwum', archives_path, class: 'blog-nav-item' %>
+      <% end %>
+    </nav>
   </div>
-</nav>
+</div>
