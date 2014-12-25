@@ -1,4 +1,5 @@
 <%= render partial: 'meta', locals: {subtitle: @post.title} %>
+<%= render partial: 'posts/nav', locals: {actived_item: 'posts'} %>
 <%= render partial: 'post', locals: {post: @post} %>
 
 <p><%= @post.comment_posts.humanize_count %></p>

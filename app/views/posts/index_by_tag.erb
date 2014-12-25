@@ -1,4 +1,5 @@
 <%= render partial: 'meta', locals: {subtitle: @tag.name} %>
+<%= render partial: 'posts/nav', locals: {actived_item: 'posts'} %>
 <%= render partial: 'posts', locals: {posts: @posts} %>
 <%= render partial: 'paginate_tagged_posts', locals: {posts: @posts, tag_slug: @tag.slug} %>
 
