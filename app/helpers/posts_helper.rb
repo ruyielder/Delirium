@@ -42,7 +42,7 @@ module PostsHelper
     end
 
     def html_image(url)
-      "<img src='#{url}' />"
+      "<div class='center-block'><img src='#{url}' class='img-responsive center-block'/></div>"
     end
   end
 end

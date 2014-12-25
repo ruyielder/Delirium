@@ -19,7 +19,8 @@ describe PostsHelper do
         create(:image_post, post: post, basename: 'logo')
         renderer = PostsHelper::ImagePostRenderer.new(post)
         content = renderer.render(post.content)
-        expect(content).to eq "Hej to moje logo: <img src='/uploads/image_post/image/1/bird.png' />"
+        expect(content).to eq "Hej to moje logo: <div class='center-block'>" +
+          "<img src='/uploads/image_post/image/1/bird.png' class='img-responsive center-block'/></div>"
       end
 
       it 'replaces markups with html' do
@@ -28,8 +29,9 @@ describe PostsHelper do
         create(:image_post, post: post, basename: 'example')
         renderer = PostsHelper::ImagePostRenderer.new(post)
         content = renderer.render(post.content)
-        expect(content).to eq ("Foo <img src='/uploads/image_post/image/1/bird.png' /> " +
-                               "boo <img src='/uploads/image_post/image/2/bird.png' />")
+        expect(content).to eq "Foo <div class='center-block'><img src='/uploads/image_post/image/1/bird.png'" +
+          " class='img-responsive center-block'/></div> boo <div class='center-block'>" +
+          "<img src='/uploads/image_post/image/2/bird.png' class='img-responsive center-block'/></div>"
       end
 
       it 'replaces markup with html written in polish' do
@@ -37,7 +39,8 @@ describe PostsHelper do
         create(:image_post, post: post, basename: 'żółć')
         renderer = PostsHelper::ImagePostRenderer.new(post)
         content = renderer.render(post.content)
-        expect(content).to eq "Hej to moje logo: <img src='/uploads/image_post/image/1/bird.png' />"
+        expect(content).to eq "Hej to moje logo: <div class='center-block'>" +
+          "<img src='/uploads/image_post/image/1/bird.png' class='img-responsive center-block'/></div>"
       end
     end
   end
