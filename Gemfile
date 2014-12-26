@@ -71,3 +71,5 @@ gem 'carrierwave'
 gem 'metamagic'
 
 gem 'bootstrap-sass'
+
+gem 'time_difference'
