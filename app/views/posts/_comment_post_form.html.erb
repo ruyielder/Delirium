@@ -1,26 +1,26 @@
 <%= form_for(comment_post, url: comment_post_path(post)) do |f| %>
-<% if @comment_post.errors.any? %>
-<p>Error: <%= @comment_post.errors.first[0] %> <%= @comment_post.errors.first[1] %></p>
-<% end %>
+  <% if @comment_post.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span> <%= @comment_post.errors.first[1] %>
+    </div>
+  <% end %>
 
-<div class="field">
-    <%= f.label :name, 'Nazwa' %>
-    <%= f.text_field :name%>
-</div>
-<div class="field">
+  <div class="form-group">
+    <%= f.label :name, 'Nazwa*' %>
+    <%= f.text_field :name, class: 'form-control', placeholder: 'Wprowadź nazwę dla siebie' %>
+  </div>
+  <div class="form-group">
     <%= f.label :url, 'Strona o Tobie' %>
-    <%= f.text_field :url %>
-</div>
-<div class="field">
+    <%= f.text_field :url, class: 'form-control', placeholder: 'Wprowadź URL strony o Tobie' %>
+  </div>
+  <div class="form-group">
     <%= f.label :email, 'E-mail' %>
-    <%= f.text_field :email %>
-</div>
-<div class="field">
-    <%= f.label :content, 'Wiadomość' %>
-    <%= f.text_area :content %>
-</div>
-
-<div class="actions">
-    <%= f.submit %>
-</div>
+    <%= f.text_field :email, class: 'form-control', placeholder: 'Wprowadź swój email (email nie będzie opublikowany)' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content, 'Wiadomość*' %>
+    <%= f.text_area :content, class: 'form-control', size: '30x10', placeholder: 'Wprowadź wiadomość' %>
+  </div>
+  <button type="submit" class="btn btn-success btn-block">Wyślij</button>
 <% end %>
