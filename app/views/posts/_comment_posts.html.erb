@@ -1,14 +1,18 @@
 <% comment_posts.each do |comment| %>
-  <div>
+
+<div class="well">
+  <strong class="pull-left primary-font">
     <% if comment.url.blank? %>
-      <p><strong>Autor:</strong> <%= comment.name %></p>
+        <%= comment.name %>
     <% else %>
-      <p><strong>Autor:</strong> <%= link_to comment.name, comment.url %></p>
+        <%= link_to comment.name, comment.url %>
     <% end %>
+  </strong>
 
-    <p><strong>Data:</strong> <%= comment.created_at %></p>
+  <small class="pull-right text-muted">
+    <span class="glyphicon glyphicon-time"></span> <%= comment.humanized_time_difference %></small>
+  <br />
+  <p><%= comment.content %></p>
+</div>
 
-    <p><%= comment.content %></p>
-    <br />
-  </div>
 <% end %>

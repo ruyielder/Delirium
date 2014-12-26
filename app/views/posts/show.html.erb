@@ -1,37 +1,17 @@
 <%= render partial: 'meta', locals: {subtitle: @post.title} %>
-<%= render partial: 'header' %>
 <%= render partial: 'posts/nav', locals: {actived_item: 'posts'} %>
-<%= render partial: 'post', locals: {post: @post} %>
-
-<p><%= @post.comment_posts.humanize_count %></p>
-
-<%= render partial: 'comment_posts', locals: {comment_posts: @post.comment_posts} %>
-
-<%= form_for(@comment_post, url: comment_post_path(@post)) do |f| %>
-  <% if @comment_post.errors.any? %>
-    <p>Error: <%= @comment_post.errors.first[0] %> <%= @comment_post.errors.first[1] %></p>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name, 'Nazwa' %>
-    <%= f.text_field :name%>
+<%= render partial: 'header' %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 blog-main">
+      <%= render partial: 'post', locals: {post: @post} %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :url, 'Strona o Tobie' %>
-    <%= f.text_field :url %>
+  <div class="row  col-centered">
+    <div class="col-sm-offset-2 col-sm-8 blog-main">
+      <%= render partial: 'comment_posts', locals: {comment_posts: @post.comment_posts} %>
+      <%= render partial: 'comment_post_form', locals: {comment_post: @comment_post, post: @post} %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :email, 'E-mail' %>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :content, 'Wiadomość' %>
-    <%= f.text_area :content %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
+</div>
 <%= render partial: 'footer' %>
