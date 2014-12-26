@@ -6,8 +6,27 @@ pl:
     formats:
       default: "%d/%m/%Y %H:%M"
       long: "%d/%m/%Y %H:%M"
-
-  errors:
+  activerecord:
+    errors:
+      models:
+        comment_post:
+          attributes:
+            name:
+              blank: "Uzupełnij nazwę"
+              too_short: "Nazwa jest zbyt krótka (wymagane jest conajmniej %{count} znaki)"
+              too_long: "Nazwa jest zbyt długa (maksymalnie można użyć %{count} znaków)"
+            url:
+              invalid: "Popraw adres strony"
+              too_short: "Adres strony jest zbyt krótki (wymagane jest conajmniej %{count} znaków)"
+              too_long: "Adres strony jest zbyt długi (maksymalnie można użyć %{count} znaków)"
+            email:
+              invalid: "Popraw email"
+              too_short: "Email jest zbyt krótki (wymagane jest conajmniej %{count} znaków)"
+              too_long: "Email jest zbyt długi (maksymalnie można użyć %{count} znaków)"
+            content:
+              blank: "Uzupełnij treść wiadomości"
+              too_short: "Treść wiadomości jest zbyt krótka (wymagane jest conajmniej %{count} znaki)"
+              too_long: "Treść wiadomości jest zbyt długi (maksymalnie można użyć %{count} znaków)"
     messages:
-      blank: "Proszę uzupelnij pole %{attribute} w modelu %{model}'"
+      blank: "Proszę uzupelnij pole %{attribute} w modelu %{model}"
 
