@@ -1,17 +1,22 @@
 <%= render partial: 'meta', locals: {subtitle: @post.title} %>
 <%= render partial: 'posts/nav', locals: {actived_item: 'posts'} %>
 <%= render partial: 'header' %>
+
 <div class="container">
   <div class="row">
     <div class="col-sm-12 blog-main">
-      <%= render partial: 'post', locals: {post: @post} %>
+      <%= render partial: 'post', locals: {post: @post, with_comment_count: false} %>
     </div>
   </div>
   <div class="row  col-centered">
     <div class="col-sm-offset-2 col-sm-8 blog-main">
+      <span id="komentarze"></span>
+      <h2><%= @post.comment_posts.humanize_count %></h2>
       <%= render partial: 'comment_posts', locals: {comment_posts: @post.comment_posts} %>
+      <h2>Skomentuj:</h2>
       <%= render partial: 'comment_post_form', locals: {comment_post: @comment_post, post: @post} %>
     </div>
   </div>
 </div>
+<br />
 <%= render partial: 'footer' %>

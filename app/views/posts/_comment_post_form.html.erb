@@ -11,8 +11,8 @@
     <%= f.text_field :name, class: 'form-control', placeholder: 'Wprowadź nazwę dla siebie' %>
   </div>
   <div class="form-group">
-    <%= f.label :url, 'Strona o Tobie' %>
-    <%= f.text_field :url, class: 'form-control', placeholder: 'Wprowadź URL strony o Tobie' %>
+    <%= f.label :url, 'Strona' %>
+    <%= f.text_field :url, class: 'form-control', placeholder: 'Wprowadź URL' %>
   </div>
   <div class="form-group">
     <%= f.label :email, 'E-mail' %>
@@ -22,5 +22,5 @@
     <%= f.label :content, 'Wiadomość*' %>
     <%= f.text_area :content, class: 'form-control', size: '30x10', placeholder: 'Wprowadź wiadomość' %>
   </div>
-  <button type="submit" class="btn btn-success btn-block">Wyślij</button>
+  <button type="submit" class="btn btn-primary btn-block">Wyślij</button>
 <% end %>
