@@ -29,4 +29,8 @@ class PostDecorator < Draper::Decorator
   def published_at
     localize object.published_at
   end
+
+  def archives_published_at
+    localize object.published_at, format: :archives
+  end
 end

@@ -1,11 +1,17 @@
 pl:
+  datetime: &datetime
+    month_names: [~, Styczeń, Luty, Marzec, Kwiecień, Maj, Czerwiec, Lipiec, Sierpień, Wrzesień, Październik, Listopad, Grudzień]
+
   date:
+    <<: *datetime
     formats:
       default: "%d/%m/%Y"
   time:
+    <<: *datetime
     formats:
       default: "%d/%m/%Y %H:%M"
       long: "%d/%m/%Y %H:%M"
+      archives: "%B %Y"
   activerecord:
     errors:
       models:
