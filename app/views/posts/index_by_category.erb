@@ -3,8 +3,4 @@
 <%= render partial: 'header' %>
 <%= render partial: 'posts', locals: {posts: @posts} %>
 <%= render partial: 'paginate_category_posts', locals: {posts: @posts, category_slug: @category.slug} %>
-
-<% @posts.each do |post| %>
-    <p><%= post.comment_posts.humanize_count %></p>
-<% end %>
 <%= render partial: 'footer' %>
