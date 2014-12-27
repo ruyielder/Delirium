@@ -4,7 +4,7 @@ class PostDecorator < Draper::Decorator
   delegate_all
 
   def self.collection_decorator_class
-    PaginatingDecorator
+    PostsDecorator
   end
 
   def link_to_post
