@@ -1,0 +1,15 @@
+<%= render partial: 'posts/meta', locals: {subtitle: 'Tagi'} %>
+<%= render partial: 'posts/nav', locals: {actived_item: 'tags'} %>
+<%= render partial: 'posts/header' %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-8 blog-main">
+      <ul class="list-inline">
+        <% @tags.each do |tag| %>
+          <li class="list-group-item"><%= link_to tag.name, tagged_posts_path(tag.slug), class: 'btn btn-info' %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<%= render partial: 'posts/footer' %>
