@@ -12,6 +12,12 @@
       <% else %>
         <%= link_to 'Archiwum', archives_path, class: 'blog-nav-item' %>
       <% end %>
+
+      <% if actived_item == 'tags' %>
+          <%= link_to 'Tagi', tags_path, class: 'blog-nav-item active' %>
+      <% else %>
+          <%= link_to 'Tagi', tags_path, class: 'blog-nav-item' %>
+      <% end %>
     </nav>
   </div>
 </div>
